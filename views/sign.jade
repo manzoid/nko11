@@ -1,0 +1,16 @@
+form(action="",method="POST")
+
+  h2 Sign #{card.to_name}'s Card
+
+  dl.form.clearfix
+    dt 
+      label(for="name") Name:
+    dd
+      input(type="text",name="name",id="name",class="border-radius-8 inner-shadow")
+    dt
+      label(for="message") Message:
+    dd
+      textarea(name="message",id="message",class="border-radius-8 inner-shadow")
+
+  fieldset
+    input(type="submit",value="Sign the Card",class="button border-radius-8")

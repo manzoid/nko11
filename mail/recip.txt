@@ -1,0 +1,10 @@
+Greetings {{recip}},<br /><br />
+
+You have recieved <a href="{{card}}">a card<a/>. Why not take a peek and see who's signing it?<br />
+
+The card can be found at: <a href="{{card}}>{{card}}</a><br /><br />
+
+---<br /><br />
+
+This is an automated message from <a href="http://bearshark.nko2.nodeknockout.com/">Greetings Cardling</a><br/>
+a project written for <a href="http://nodeknockout.com">Node Knockout</a>.

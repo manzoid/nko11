@@ -1,0 +1,12 @@
+- if (theme)
+  h1 Theme - #{theme.title}
+  
+  h3 Card Background
+  - if (theme.background)
+    img(src="/themes/"+theme.uuid+"/images/"+theme.background)
+  
+  h3 Card Sprites (Optional)
+  - if (theme.supporting_files && theme.supporting_files.length > 0)
+    - each file in theme.supporting_files
+      - if (file)
+        img(src="/themes/"+theme.uuid+"/images/"+file)

@@ -1,0 +1,27 @@
+h2 Signature Preview
+
+.info
+  p If you want to record a message you can:
+  p On your phone, call: +1.571.762.1283
+  p Or on Skype, call: 
+    a(href="skype:+990009369996142486?call") +990009369996142486
+  p Once you've connected you'll need to use your generated pin: #{signature.pin}
+
+img(src="/card/"+card_id+"/"+signature_id+"/image")
+br
+a(href="/card/"+card_id+"/"+signature_id+"/signpad") Want to draw again?
+
+br
+br
+br
+
+.button.btn-save
+  |Save signature!
+  
+form#submit-signature(action="/card/"+card_id+"/"+signature_id+"/save-signature", method='POST')
+  input#security-token-if-we-had-any-such-thing(type="hidden",name="xsrf",value="boo!")
+
+script(type="text/javascript")
+  $('.btn-save').click(function() {
+    $('#submit-signature').submit();
+  });

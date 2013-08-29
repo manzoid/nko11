@@ -1,0 +1,9 @@
+h2 Cards
+ul
+  - each card in cards
+    li
+      a(href="/card/"+card.meta.key)
+        - if (card.data.title)
+          #{card.data.title}
+        - if (!(card.data.title))
+          Card...with no title

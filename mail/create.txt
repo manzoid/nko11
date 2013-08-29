@@ -1,0 +1,13 @@
+Greetings,<br /><br />
+
+You created a greeting card so we wanted to provide you with some information.<br /><br />
+
+Because this is collaborative you may want to share this with friends {{recip}}. To do so just copy {{card}} and paste it into your social media outlet or email client and fire away.< br/><br/>
+
+You can also see who else has signed <a href="{{card}}">the card you made</a>.<br />
+The card can be found at: <a href="{{card}}>{{card}}</a><br /><br />
+
+---<br /><br />
+
+This is an automated message from <a href="http://bearshark.nko2.nodeknockout.com/">Greetings Cardling</a><br/>
+a project written for <a href="http://nodeknockout.com">Node Knockout</a>.

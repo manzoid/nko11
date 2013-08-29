@@ -1,0 +1,5 @@
+node_modules
+*.sw[a-z]
+public/stylesheets/card.css
+public/stylesheets/signpad.css
+public/stylesheets/style.css

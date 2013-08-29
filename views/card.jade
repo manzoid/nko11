@@ -1,0 +1,81 @@
+!!! 5
+html(lang='en')
+  head
+    title View your card
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;')
+
+    link(rel='stylesheet', href='/stylesheets/card.css', type='text/css')
+    link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Gloria+Hallelujah', type='text/css')
+    script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js")
+    script(src="http://cdn.jquerytools.org/1.2.5/jquery.tools.min.js")
+    script(src="/javascripts/jquery.cuteTime.js")
+    script(src="/javascripts/soundmanager2-nodebug-jsmin.js")
+    script(src="/javascripts/yabble.js")
+    script(src="/javascripts/gamejs-wrapped.js")
+    script(src="/javascripts/card.js")
+    script(src="/nowjs/now.js")
+    script
+      //- todo: This should be in a partial.
+      var cardSpec = {
+        width: #{theme.width},
+        height: #{theme.height},
+        backgroundImageUrl: '#{theme.backgroundImageUrl}',
+        spriteImageUrl: '#{theme.spriteImageUrl}',
+        spriteImageEditMaskUrl: '#{theme.spriteImageEditMaskUrl}',
+        defaultSpriteImageUrl: '#{theme.defaultSpriteImageUrl}',
+        defaultSpriteImageEditMaskUrl: '#{theme.defaultSpriteImageEditMaskUrl}',
+        spriteWidth: #{theme.spriteWidth},
+        spriteHeight: #{theme.spriteHeight},
+        moveStyle: '#{theme.moveStyle}'
+      };
+
+      var $g = {
+        resourceBaseHref: '..'
+      };
+      require.setModuleRoot('../javascripts/');
+      //require.setModuleRoot('..');
+      require.run('animate');
+
+  body
+
+    .canvas-container
+      canvas#gjs-canvas
+      #message-overlay(style="display:none")
+        #message-content
+
+    #signature-list-box
+      - each signature in signatures
+        include signature
+
+    script(type='text/javascript')
+      /*
+        Sample sig:
+        uuid: daf2343c-c9ba-4854-9fc8-ae7b93294cca
+        card_id: a296e098-4a2e-460c-8a3a-9300b2d092f3
+        created: 1314542146845
+        pin: 99585
+        name: Isaac
+        message: HELLO HELLO
+        recording_id: recording-daf2343c-c9ba-4854-9fc8-ae7b93294cca
+      */
+      var sigList = !{signaturesJSON};
+      
+      // This is called by the animation module when it's ready to accept the data
+      // and start preloading resources.
+      function initData() {
+        // Generate the signature URL's.
+        sigList.forEach(function(sig) {
+          // Note need to pop up a level because the anim package loader has a different url base.
+          var urlBase = "card/" + sig.card_id + '/' + sig.uuid;
+          sig.spriteImageUrl = urlBase + '/image';
+          if (sig.recording_id) {
+            sig.soundUrl = '../' + urlBase + '/recording';
+          } else {
+            //sig.soundUrl = '../sample/hey_man.mp3';
+          }
+        });
+        // Pass in the startup list of signatures.
+        // We will have more coming in hopefully via socket.io.
+        initSprites(sigList);
+      }

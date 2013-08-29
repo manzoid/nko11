@@ -1,0 +1,21 @@
+- urlBase = '/card/' + signature.card_id + '/' + signature.uuid
+  .signature-list-item(url-base = urlBase)
+    span.icon-col
+      //- Leave the message-icon space there even if no voice message.
+      span.message-icon
+      - if (signature.recording_id)
+          a.message-link(href="#", recording-url="#{urlBase}/recording") [PLAY]
+      - else
+          span.small (No sound)
+    - if (signature.name)
+        span.username #{signature.name}          
+    - if (signature.created)
+      - var ms = parseInt(signature.created);
+        span.timestamp(data-timestamp='#{ms}')
+    //- TODO: need the sig image URL stored here...
+    - if (true || signature.image_id)
+      span.sig-image
+        img(src="#{urlBase}/image")
+    - if (signature.message)
+      span.message
+        #{signature.message}

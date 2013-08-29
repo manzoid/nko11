@@ -1,0 +1,25 @@
+!!! 5
+html
+  head
+    title= title
+
+    link(rel='stylesheet', href='/stylesheets/base.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+
+    script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js")
+    script(src='http://cdn.jquerytools.org/1.2.5/tiny/jquery.tools.min.js')
+    script(src='/javascripts/client.js', type='text/javascript')
+    script(src='/javascripts/common.js', type='text/javascript')
+
+  body
+    header.header
+      .content 
+        a(href="/")
+          img(src="/images/greetings-cardling.png",id="logo")
+        
+        <iframe src="http://nodeknockout.com/iframe/bearshark" id="vote-please" frameborder="0" scrolling="no" allowtransparency="true" width="115" height="25"></iframe>
+  
+    #content!= body
+  
+
+

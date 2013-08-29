@@ -1,0 +1,31 @@
+h2 Create a New Greeting Card
+
+form(action="",method="POST")
+  h3 Recipient Information
+  dl.form.clearfix
+    dt 
+      label(for="to_name") Their Name:
+    dd 
+      input(type="text",name="to_name",id="to_name",class="border-radius-8 inner-shadow")
+    dt    
+      label(for="to_email") Their Email:
+    dd
+      input(type="text",name="to_email",id="to_email",class="border-radius-8 inner-shadow")
+
+  h3 Card Details
+  dl.form.clearfix
+    dt
+      label(for="from_email") Your Email:
+    dd
+      input(type="text",name="from_email",id="from_email",class="border-radius-8 inner-shadow")
+
+    dt
+      label(for="theme") Card Theme:
+    dd
+      select(name="theme",id="theme",class="border-radius-8 inner-shadow")
+        option Select a Theme
+        - each theme in themes
+          option(value=theme.key) #{theme.title}
+
+  fieldset
+    input(type="submit",value="Create This Card!",class="button border-radius-8")

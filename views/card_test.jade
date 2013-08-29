@@ -1,0 +1,26 @@
+!!! 5
+html(lang='en')
+  head
+    title View your card
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;')
+
+    link(rel='stylesheet', href='/stylesheets/card.css', type='text/css')
+    link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Gloria+Hallelujah', type='text/css')
+    script(src="http://cdn.jquerytools.org/1.2.5/jquery.tools.min.js")
+    script(src="/javascripts/soundmanager2-nodebug-jsmin.js")
+    script(src="/javascripts/yabble.js")
+    script(src="/javascripts/card/gamejs-wrapped.js")
+    script(src="/javascripts/card/card.js")
+    script
+      require.setModuleRoot('./javascripts/card/');
+      require.run('animate');
+
+  body
+
+    .canvas-container
+      canvas#gjs-canvas
+      #message-overlay(style="display:none")
+        #message-content
+
+    img#core-img(src="images/card0001.png")

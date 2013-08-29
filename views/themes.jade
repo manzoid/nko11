@@ -1,0 +1,61 @@
+h2 Create a Custom Card Theme
+
+form(action="/themes/upload",method="POST",enctype="multipart/form-data")
+  .details
+    h3 Helpful Information and Specifications
+    ul.theming
+      li Upload a zip file with images for your theme.
+      li The card background file should be called "background.png".
+        div
+          strong Sizing:&nbsp;
+          |The card area for this is 960px wide by 640px tall.
+      li The sprite background files should be called "sprite.png" and "sprite_edit.png".
+      li A sample sprite background size could be 300x300.
+        div
+          strong Note:&nbsp;
+          |The "_edit.png" version should have a transparent hole punched out of the middle that is where the user is allowed to finger-write or doodle onto your sprite.
+
+  h3 Submit your theme
+  dl.form.clearfix
+    dt.big 
+      label(for="title") Title:
+    dd
+      input(type="title",name="title",id="title")
+    dt.big
+      label(for="payload") Zip:
+    dd
+      input(type="file",name="payload",id="payload")
+    dt.big
+      label(for="width") Card (background) width:
+    dd
+      input(type="number",name="width",id="width",value="960")
+    dt.big
+      label(for="height") Card (background) height:
+    dd
+      input(type="number",name="height",id="height",value="640")
+    dt.big
+      label(for="spriteWidth") Sprite width:
+    dd
+      input(type="number",name="spriteWidth",id="spriteWidth",value="300")
+    dt.big
+      label(for="spriteHeight") Sprite weight:
+    dd
+      input(type="number",name="spriteHeight",id="spriteHeight",value="300")
+    dt.big
+      label(for="moveStyle") Move Style:
+    dd
+      input(type="text",name="moveStyle",id="moveStyle",value="right")
+      p (valid values: down, left, right, up)
+  
+  fieldset
+    input.button.border-radius-8.big-margin(type="submit",value="Upload")
+
+  h2 List-o-Themes
+  ul.theming
+  - each theme in themes
+    li
+      a(href="/themes/"+theme.meta.key)
+        - if (theme.data.title)
+          #{theme.data.title}
+        - if (!(theme.data.title))
+          Theme...with no title

@@ -1,0 +1,36 @@
+#signpad-footer
+  button.btn-save.button.border-radius-8(style='display:none')
+    |Save this Image
+  button.btn-save.button.border-radius-8(style='display:none')
+    |Skip this Step
+  button#btn-clear.button.border-radius-8(style='display:none')
+    |Start Over
+
+form#form-upload(action='', method='post')
+  input#payload(type='hidden', name='payload')
+
+.hidey(style='display:none')
+  img#sprite     
+  img#sprite-mask-frame
+
+script
+  //- todo: This should be in a partial.
+  var cardSpec = {
+    width: #{theme.width},
+    height: #{theme.height},
+    backgroundImageUrl: '#{theme.backgroundImageUrl}',
+    spriteImageUrl: '#{theme.spriteImageUrl}',
+    spriteImageEditMaskUrl: '#{theme.spriteImageEditMaskUrl}',
+    defaultSpriteImageUrl: '#{theme.defaultSpriteImageUrl}',
+    defaultSpriteImageEditMaskUrl: '#{theme.defaultSpriteImageEditMaskUrl}',
+    spriteWidth: #{theme.spriteWidth},
+    spriteHeight: #{theme.spriteHeight},
+    moveStyle: '#{theme.moveStyle}'
+  };
+  var spriteSrc = cardSpec.spriteImageUrl || cardSpec.defaultSpriteImageUrl;
+  var spriteEditSrc = cardSpec.spriteImageEditMaskUrl || cardSpec.defaultSpriteImageEditMaskUrl;
+  $('#sprite').attr('src', spriteSrc);
+  $('#sprite-mask-frame').attr('src', spriteEditSrc);
+
+script(type='text/javascript', src='/javascripts/signpad/brush.js')
+script(type='text/javascript', src='/javascripts/signpad/signpad.js')
